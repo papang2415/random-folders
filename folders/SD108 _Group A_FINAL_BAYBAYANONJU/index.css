@@ -1,0 +1,25 @@
+body{
+    background-image: url("/img/gameback.gif");
+    /* background: no-repeat; */
+    background-size: cover;
+}
+.gameBoard {
+    /* border: solid 1px greenyellow; */
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cell {
+    border: solid black 1px ;
+    width: 133px;
+    height: 133px;
+    cursor: pointer;
+    background-size: cover;
+    
+}
+#reset{
+    background-color:green;
+    font-size: 30px;
+}

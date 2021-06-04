@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="newStyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Avengers Superheroes Gallery</h1>
+        </div>
+
+        <div class="container">
+            <div class="gallery">
+                <img class="content" onclick="myFunction(event, 'cap')" id="img" src="./src/img/captain.png"
+                    class="border border-primary" style="width: 200px; height: 300px;">
+                <img class="content" onclick="myFunction(event, 'iron')" id="img" src="./src/img/iron.png"
+                    class="border border-primary" style="width: 200px; height: 300px;">
+                <img class="content" onclick="myFunction(event, 'thor')" id="img" src="./src/img/thor.png"
+                    class="border border-primary" style="width: 200px; height: 300px;">
+                <img class="content" onclick="myFunction(event, 'doctor')" id="img" src="./src/img/doctor.png"
+                    class="border border-primary" style="width: 200px; height: 300px;">
+                <img class="content" onclick="myFunction(event, 'wanda')" id="img" src="./src/img/wanda.png"
+                    class="border border-primary" style="width: 200px; height: 300px;">
+            </div>
+
+            <div id="cap" class="description">
+                <h3>Name: Steve Rogers (Captain America)</h3>
+                <h4>Born: 4th July 1918</h4>
+                <h5>About</h5>
+                <p><span></span>A rejected military soldier, transforms into Captain America after taking a dose of a
+                    "Super-Soldier
+                    serum". But being Captain America comes at a price as he attempts to take down a war monger and a
+                    terrorist organization.</p>
+            </div>
+
+            <div id="iron" class="description">
+                <h3>Name: Tony Stark (Iron Man)</h3>
+                <h4>Born: 29 May 1970</h4>
+                <h5>About</h5>
+                <p><span></span>Tony Stark is a human. Outside the suit, he does not have any superpowers, however he is
+                    very
+                    intelligent. He made the suit himself. Iron Man can fly and shoot beams from his hands using special
+                    technology called "repulsors" in his boots and gloves. He is not hurt by most weapons like guns and
+                    cannons. There are many versions of the Iron Man suit, because Stark keeps making improvements.</p>
+            </div>
+
+            <div id="thor" class="description">
+                <h3>Name: Thor</h3>
+                <h4>Date of Birth: 964 A.D.-965 A.D.</h4>
+                <h5>About</h5>
+                <p><span></span>The powerful but arrogant god Thor is cast out of Asgard to live amongst humans in
+                    Midgard (Earth),
+                    where he soon becomes one of their finest defenders.</p>
+                <p><span></span>The warrior Thor (Chris Hemsworth) is cast out of the fantastic realm of Asgard by his
+                    father Odin (Sir Anthony Hopkins) for his arrogance and sent to Earth to live amongst humans.
+                    Falling in love with scientist Jane Foster (Natalie Portman) teaches Thor much-needed lessons, and
+                    his new-found strength comes into play as a villain from his homeland sends dark forces toward
+                    Earth.</p>
+            </div>
+            <div id="doctor" class="description">
+                <h3>Name: Doctor Stephen Strange</h3>
+                <h4>Date of Birth: 1930</h4>
+                <h5>About</h5>
+                <p><span></span>Marvel's "Doctor Strange" follows the story of the talented neurosurgeon Doctor Stephen
+                    Strange who,
+                    after a tragic car accident, must put ego aside and learn the secrets of a hidden world of mysticism
+                    and alternate dimensions. Based in New York City's Greenwich Village, Doctor Strange must act as an
+                    intermediary between the real world and what lies beyond, utilising a vast array of metaphysical
+                    abilities and artifacts to protect the Marvel Cinematic Universe.</p>
+            </div>
+            <div id="wanda" class="description">
+                <h3>Name: Wanda (Scarlet Witch)</h3>
+                <h4>Date of Birth: Early 1989</h4>
+                <h5>About</h5>
+                <p><span></span> Wanda Maximoff aka the Scarlet Witch is a Transian Sorceress and the twin sister of the
+                    speedster
+                    Quicksilver. She and her brother were once believed to have been Mutant children of Magneto the
+                    "Master of Magnetism". She was in truth an orphan who was enhanced by the High Evolutionary at
+                    Mount Wundagore becoming a conduit of Chaos Magic allowing her to manipulate probability and warp
+                    reality itself. Wanda was trained by Agatha Harkness to become one of the most powerful magic
+                    wielders on Earth. She joined the Brotherhood of Evil Mutants fighting for her "father's" cause,
+                    alongside her brother, though this was short-lived and she was later recruited into the Avengers,
+                    becoming one of their most prominent members alongside her brother.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    function myFunction(evt, hero) {
+        var i, description, content;
+        description = document.getElementsByClassName("description");
+        for (i = 0; i < description.length; i++) {
+            description[i].style.display = "none";
+        }
+        content = document.getElementsByClassName("content");
+        for (i = 0; i < content.length; i++) {
+            content[i].className = content[i].className.replace(" active", "");
+        }
+        document.getElementById(hero).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</html>

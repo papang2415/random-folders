@@ -1,0 +1,69 @@
+db.people.insertMany([
+{name:"Jolly Borbon",isActive:"true",age:20,gender:"female",eyeColor:"Black",favoriteFruits:["Rambutan","Apple","Grapes"],company:{title:"PN",email:"19104850@usc.edu.ph",phone:"09265059752",location:{country:"Philippines",Address:"Talamban, Cebu City"}}},
+{name:"Joshua Avenido",isActive:"true",age:20,gender:"male",eyeColor:"Black",favoriteFruits:["mango","Apple","Orange","Banana"],company:{title:"PN",email:"19104924@usc.edu.ph",phone:"09123564982",location:{country:"Philippines",Address:"Talamban, Cebu City"}}},
+{name:"Mary Mae Pastidio",isActive:"true",age:19,gender:"female",eyeColor:"Black",favoriteFruits:["mango","Apple","Orange"],company:{title:"PN",email:"19104872@usc.edu.ph",phone:"09364717610",location:{country:"Philippines",Address:"Talamban, Cebu City"}}}])
+
+
+db.people.insertOne([{name: "Dexter Tampioc",isActive:"true",age:21,gender:"Male",eyeColor:"Black",favoriteFruits:["mango","Apple","Grapes","Orange"],company:{title:"PN",email:"19104850@usc.edu.ph ",phone:"09069386469",location:{country:"Philippines",Address:"Talamban, Cebu City"}}}])
+db.people.insertOne({"name": "Dexter Tampioc","isActive":"true","age":21,"gender":"male","eyeColor":"Black","favoriteFruits":["mango","Apple","Grapes","Orange"],"company":{title:"PN","email":"19104857@usc.edu.ph","phone":"09069386469","location":{country:"Philippines","Address":"Talamban, Cebu City"}}})
+
+db.inventory.find( { $and: [ { gender: "Female" }, { age: { $exists: true } } ] } )
+
+db.people.find({ $where: 'this.gender == "Female" && this.age < 20 && this.age > 30'})
+
+db.people.find( { $and: [ { gender: "Female" }, { age: { $gt: 20, $lt: 35 } ] } )
+
+db.people.find({$and:[{gender: "female"},{age:{$gt:20,$lt:35}}]})
+
+
+db.inventory.find( { qty: { $gt: 20 } } 
+1. db.movie.count({runtime:{$gt: 120}})
+2. db.movie.find({$and: [{genres: "Adventure"},{genres: "Biography"},{genres: "Drama"}]})
+
+db.inventory.update( { "carrier.fee": { $gt: 2 } }, { $set: { price: 9.99 } } )
+ db.user.update({"_id" : ObjectId("51...")},{$set: {age: 40,salary: 7000}})
+
+3.db.movie.update({"rated" :"R"},{$set: {rated :"R-18"}})
+4.db.movie.find({"director": “George Lucas”})
+
+6. db.movie.find({$and:[{"writers": "Wes Anderson"},{"metacritic":{$gt: 80}}]})
+7.db.inventory.deleteMany({ status : "A" })
+db.people.find({$or:[{age:{$lt:28}},{age:{$gt:35}}]})
+db.movie.deleteMany({$or:[{"imdb.rating": },{"imdb.votes": }]})
+
+8a. db.movie.find({"imdb.rating":{$gt: 6}})
+8b. db.movie.find({"imdb.votes":{$gt: 5000}})
+8c. db.movie.find({"tomato.meter":{$gt: 70}})
+8d. db.movie.find({"tomato.rating":{$gt: 5}})
+8e. db.movie.find({"tomato.userRating":{$gt: 3}})
+8f. db.movie.find({"tomato.userReviews":{$gt: 1000}})
+8g. db.movie.find({"metacritic":{$gt: 40}})
+9. db.movie.count({$and:[{"imdb.rating":{$gt: 6}},{"imdb.votes":{$gt: 5000}},{"tomato.meter":{$gt: 70}},{"tomato.rating":{$gt: 5}},{"tomato.userRating":{$gt: 3}},
+{"tomato.userReviews":{$gt: 1000}},{"metacritic":{$gt: 40}}]})
+11. 
+db.movie.insertOne({"title":"Parasite","year":2019,"rated":"R","runtime":132,"countries":["South Korea"],"genres":["Black Comedy","Thriller"],"director":"Bong Joon-ho","writers":["Bong Joon-ho","Han Jin-won"],"actors":["Song Kang-ho","Lee Sun-kyun","Cho Yeo-jeong","Choi Woo-shik","Park So-dam","Lee Jung-eun","Jang Hye-jin"],"plot":"The Kim family—father Ki-taek, mother Chung-sook, son Ki-woo and daughter Ki-jung—live in a small semi-basement apartment (banjiha), have low-paying temporary jobs as pizza box folders, and struggle to make ends meet. University student Min-hyuk, a friend of Ki-woo's, gives the family a scholar's rock meant to promise wealth.","imdb":{"id":"tt6751668","rating":8.6,"votes":491247},"tomato":{"meter":null,"image":null,"rating":null,"reviews":null,"fresh":null,"consensus":null,"userMeter":null,"userRating":null,"userReviews":null},"metacritic":null,"awards":{"wins":null,"nominations":null,"text":null},"type":"movie"});
+
+10. db.movie.find({$or:[{"awards.wins":{$gte:1}},{"awards.nominations":{$gte:1}}]})
+db.movie.find({$or:[{"awards.wins":{$gte:1}},{"awards.nominations":{$gte:0}},{group:{_id:{title:"$title",year:"$year",awardWins:"$awards.wins", awardNomination:"$awards.nominations"}}}]}).pretty()
+db.movie.find({"actor": “Hayden Christensen”})
+
+
+
+
+5.)db.people.find({"company.title":"CANDECOR"})
+
+6.)db.people.find({"eyeColor":"blue"}).count()
+
+7.)db.people.find({"favoriteFruit":{$eq:"banana"}})
+
+8.)db.people.find({"isActive":true}).count()
+
+9.)db.people.find({$and:[{"isActive":true},{"gender": "male"}]})
+
+10.)db.people.find({$and:[{"isActive":false},{"gender": "female"},{"age":{$gt:25,$lt:40}}]})
+
+11.)db.people.find({$and:[{tags:"pariatur"},{tags:"veniam"}]})
+
+12.)db.people.find({$or:[{"gender":"male"},{"eyeColor":"Green"}]})
+
+13.)db.people.find({$or:[{age:{$lt:28}},{age:{$gt:35}}]})

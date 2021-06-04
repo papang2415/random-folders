@@ -1,0 +1,208 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</head>
+<style>
+    body {
+        background-image: url(https://camo.githubusercontent.com/a37fbe84d65055f56a106b453a6d65415a7a8e48f6caa4b5391f391d87ffbcc7/68747470733a2f2f63646e2d73686f702e61646166727569742e636f6d2f393730783732382f333333332d30312e6a7067);
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    div.container-fluid {
+        margin-top: 150px;
+        margin-bottom: 10px;
+        border: 1px solid black;
+        text-align: center;
+        border-radius: 20px;
+        padding: 15px;
+    }
+
+    .row {
+        text-align: center;
+        padding: 5px;
+    }
+
+    div.col-sm-3 {
+        margin-top: 20px;
+        margin-left: 70px;
+        width: 100%;
+        border-radius: 20px;
+        padding: 15px;
+
+    }
+
+    /* The switch - the box around the slider */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.slider {
+        background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+</style>
+
+<body>
+
+    <div class="container text-white">
+        <div class="row justify-content-center">
+            <div class="container-fluid bg-success">
+                <h1>MQTT Switch</h1>
+                <h4 id='status-header'>Connecting to broker...</h4>
+            </div>
+            <div class="col-sm-3 border border-success bg-danger">
+
+                <div class="row">
+                    <h4>Switch for NeoPixel Index 0</h4>
+                </div>
+                <div class="row justify-content-center">
+                    <label class="switch">
+                        <input type="checkbox" id="pub-switch-0">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="col-sm-3 border border-success bg-danger">
+
+                <div class="row">
+                    <h4>Switch for NeoPixel Index 1</h4>
+                </div>
+                <div class="row justify-content-center">
+                    <label class="switch">
+                        <input type="checkbox" id="pub-switch-1">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="col-sm-3 border border-success bg-danger">
+                <div class="row">
+                    <h4>Switch for NeoPixel Index 2</h4>
+                </div>
+                <div class="row justify-content-center">
+                    <label class="switch ">
+                        <input type="checkbox" id="pub-switch-2">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+</body>
+<script src="./browserMqtt.js"></script>
+<script>
+
+    var broker = 'wss://test.mosquitto.org:8081/mqtt'; //put the broker in secure socket to a variable broker
+    var client = mqtt.connect(broker); // put the connection to a variavle client
+
+    var status_header = document.getElementById('status-header') //call the element with an id of status-header and place it in a variable status_header
+
+    client.on('connect', function () { //function that connect to the broker
+        status_header.innerHTML = 'Connected to ' + broker; //whenever it is successfully connected to the broker, change the text in the attribute with an id of status-header to "Connected to plus the broker"
+        console.log('Connected to ' + broker) // console the "Connected to plus the broker"
+    })
+
+
+    var pub_switch_0 = document.getElementById('pub-switch-0'); //call the element with an id of pub-switch-0 and place in a variable pub_switch_0
+    pub_switch_0.onclick = () => { //function onclick 
+        if (pub_switch_0.checked == true) { //if the value is true or if the button is clicked or turn on
+            client.publish('cpx-switch/index/0', String(pub_switch_0.checked)); //publish the topic 'cpx-switch/index/0 with the value of the switch converted to string 
+        }
+        else { //if the button is clicked and the value is false or if it is off
+            client.publish('cpx-switch/index/0', String(pub_switch_0.checked)); //publish the topic 'cpx-switch/index/0 with the value of the switch converted to string
+        }
+    }
+
+
+    var pub_switch_1 = document.getElementById('pub-switch-1'); //call the element with an id of pub-switch-1 and place in a variable pub_switch_1
+    pub_switch_1.onclick = () => { //function onclick
+        if (pub_switch_1.checked == true) { //if the value is true or if the button is clicked or turn on
+            client.publish('cpx-switch/index/1', String(pub_switch_1.checked)); //publish the topic 'cpx-switch/index/1 with the value of the switch converted to string
+        }
+        else { //if the button is clicked and the value is false or if it is off 
+            client.publish('cpx-switch/index/1', String(pub_switch_1.checked)); //publish the topic 'cpx-switch/index/1 with the value of the switch converted to string
+        }
+    }
+    var pub_switch_2 = document.getElementById('pub-switch-2'); //call the element with an id of pub-switch-1 and place in a variable pub_switch_2
+    pub_switch_2.onclick = () => { //function onclick
+        if (pub_switch_2.checked == true) { //if the value is true or if the button is clicked or turn on
+            client.publish('cpx-switch/index/2', String(pub_switch_2.checked)); //publish the topic 'cpx-switch/index/2 with the value of the switch converted to string
+        }
+        else { //if the button is clicked and the value is false or if it is off
+            client.publish('cpx-switch/index/2', String(pub_switch_2.checked)); //publish the topic 'cpx-switch/index/2 with the value of the switch converted to string
+        }
+    }
+</script>
+
+</html>

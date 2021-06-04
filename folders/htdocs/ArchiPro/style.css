@@ -1,0 +1,85 @@
+body {
+    font-size: 19px;
+
+}
+table{
+    width: 53.5%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: darkgray;
+    border:4px solid black;
+    font-family: monospace;
+}
+tr {
+    border-bottom: 1px solid #cbcbcb;
+}
+th, td{
+    border: none;
+    height: 30px;
+    padding: 2.5px;
+}
+form {
+    width: 50%;
+    margin: 50px auto;
+    text-align: left;
+    padding: 20px; 
+    border: 4px solid black; 
+    border-radius: 5px;
+    background-image: url("Image/back.gif");
+}
+
+.input-group {
+    margin: 12px 0px 12px 0px;
+}
+.input-group label {
+    display: block;
+    text-align: left;
+    margin: 3px;
+}
+.input-group input {
+    height: 30px;
+    width: 93%;
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.save_btn {
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    background: rgb(30, 134, 30);
+    border: none;
+    border-radius: 5px;
+}
+.del_btn{
+    text-decoration: none;
+    padding: 2px 5px;
+    color: white;
+    border-radius: 3px;
+    background: #af0606;
+}
+.msg {
+    margin: 30px auto; 
+    padding: 10px; 
+    border-radius: 5px; 
+    color: #127014; 
+    background: #dff0d8; 
+    border: 1px solid #083a09;
+    width: 50%;
+    text-align: center;
+}
+.design{
+    background-image: url("Image/binary.gif");
+    background-size: cover;
+
+}
+.update_btn {
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    background: rgb(30, 134, 30);
+    border: none;
+    border-radius: 5px;
+}

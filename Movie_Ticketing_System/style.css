@@ -1,0 +1,41 @@
+body {
+    background-image: url(wall.jpg);
+    background-size: cover;
+    font-family: 'Times New Roman';
+
+}
+.container,form{
+    /* align-items: center; */
+    max-width: 470px;
+    max-height: 580px;
+    margin-top: 2%;
+}
+h1 {
+    text-align: center;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 30px;
+    
+}
+#text {
+    border-radius: 5%;
+    padding: 5px;
+}
+label {
+    font-weight: bolder;
+}
+#movies, #price, #quantity, #cash, #total, #change{
+    margin-left: 55px;
+    font-weight: bolder;
+
+}
+
+#con{
+    background-color: rgba(138, 106, 65, 0.5);
+    color: rgb(0, 0, 0);
+    text-decoration: white;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 30px;
+
+}

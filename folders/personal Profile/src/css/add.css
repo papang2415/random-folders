@@ -1,0 +1,143 @@
+
+.mySlides {
+        display: none;
+    }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    /* padding: 14px 16px; */
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+    color: white;
+}
+
+.actives {
+    background-color: #ffdb58;
+}
+
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: Monotype Corsiva;
+}
+
+.mySlides {
+    display: none
+}
+
+
+.main {
+    margin-top: 5%;
+}
+
+.main1 {
+    margin-top: 8%;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  width: 70%;
+  margin: auto; 
+  /* max-width: 100%; */
+  height: auto;
+  
+}
+
+.container {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    /* padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 10%; */
+}
+
+.contain {
+    background-color: grey;
+}
+
+
+hr {
+    border: 10px solid black;
+}
+
+#banner {
+    border-radius: 50%;
+}
+
+#img {
+    width: 120vh;
+    height: 48vh;
+    border-radius: 25%;
+    padding: 25px;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+    color: #FFD700;
+    font-size: 40px;
+}
+
+
+.text {
+    text-align: justify;
+    font-size: 18px
+    
+}
+
+h3, .caption {
+    color: black;
+    font-weight: bold;
+    font-family: Monotype Corsiva;
+    font-size: 40px;
+}
+
+.caption {
+    font-size: 25px;
+}
+
+span{
+    margin-left: 25px;
+}
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    }
+h4 {
+    font-family: Monotype Corsiva;
+    font-weight: bold;
+ }
+ .caption1{
+     font-size: 20px;
+ }
